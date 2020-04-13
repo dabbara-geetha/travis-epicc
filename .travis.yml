@@ -9,7 +9,6 @@ cache:
     - node_modules  
 deploy:
   provider: pages
-  local_dir: out
   skip_cleanup: true  
   keep_history: true
   github_token: 63de8c51a0a93a8c4df18d6ac03185e11b8d58df
