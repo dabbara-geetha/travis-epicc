@@ -5,8 +5,6 @@ deploy:
   provider: pages
   skip_cleanup: true  
   keep_history: true
-  before_install:
-  - cd /epiccCustomFunction
 script:
   - npm test
   - npm run build
