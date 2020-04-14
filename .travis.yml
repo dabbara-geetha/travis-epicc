@@ -1,18 +1,27 @@
 language: node_js
 node_js:
-  - "10" 
+  - "9"
+dist: trusty
+sudo: false
+
 branches:
   only:
-  - master 
+  - master
+
 cache:
   directories:
-    - node_modules  
-deploy:
-  provider: pages
-  skip_cleanup: true  
-  keep_history: true
- script:
+    - node_modules
+
+install:
+  - npm install 
+
+script:
   - npm test
   - npm run build
-
-    
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/
+  on:
+    branch: master
