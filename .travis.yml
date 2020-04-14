@@ -11,7 +11,8 @@ deploy:
   provider: pages
   skip_cleanup: true  
   keep_history: true
- script:
+  github_token: cCFJDS5rtfFPJCKyx5W/vnWDK1/7/F8lELyJT0RndXkTyYgu0790q9wWoxKqYIix/VHgOkuK0JULrHA3UkOLWWj6hARSeDggyKnDol3bIwr3Kwxpdqnpr+rmBMddIuseLZMhq5QgRauHBbyhyOz/k5ljPQoDlLByztLdvjJHm9XuIKhqONcO8LLepSy0vjm19BHb332knHjLkSaM92LH9HB/Rea2YI1QHq1ZZ3g+rOlGsn7vEDjx0JYcxEwJsv1GDYORHpMhDO9nv4sF2bn1U31bCu2ZjtHBlQrBCu9SBNALlsakAQ/g+hY5iSXZ8a+ubWFh8wUw4BETgwbLnnPrctLgwa41g1VATPWL11I6D6il6whKvz6Dw6F22kRYS3mvl+Hq0SHk3iv121GOJ+Aof2G/9XJKS69vErqrrqbcBRQnP/AoFbwYhH0QtB5qyfkbPO+roFsKe5d+HGYF3tG1UkW+lnu+mqWy/CXr6/pe0IbXv5zgl3bOvRGh/GdDMfNVvgPntYVMNr2LQC28bHMU+MFi0UrUYCoCu3HqD25rGVxOdNox5LvFb0L+YxlXpoQvHz8thQzU9XnAJ3Kop8xpEIIaUipgDoKzuAvgo8wUsKIi55kOwC9z6qlKzaZgwYmeVJ5Sxaav4VJUgk4xYWLtmc+oR+vP/bdfWXE5MQGq1G0=
+script:
   - npm test
   - npm run build
 
