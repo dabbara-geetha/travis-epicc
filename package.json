@@ -23,7 +23,10 @@
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
-    "test": "mocha"
+    "test": "mocha",
+    "postbuild": "npm run copy-loadjson && npm run copy-index",
+    "copy-index": "copyfiles ./src/index.html ./dist -f",
+    "copy-loadjson": "copyfiles ./src/functions/*.json ./dist -f"
   },
   "dependencies": {
     "@babel/core": "^7.6.3",
