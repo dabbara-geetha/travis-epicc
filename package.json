@@ -24,7 +24,7 @@
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
     "test": "mocha",
-    "postbuild": "npm run copy-loadjson && npm run copy-index",
+    "prebuild": "copyfiles ./src/functions/*.json ./dist -f && copyfiles ./src/index.html ./dist -f",
     "copy-index": "copyfiles ./src/index.html ./dist -f",
     "copy-loadjson": "copyfiles ./src/functions/*.json ./dist -f"
   },
