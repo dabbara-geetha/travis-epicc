@@ -23,7 +23,7 @@
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
-    "test": "jest"
+    "test": "mocha"
   },
   "dependencies": {
     "stream-json": "^1.3.3",
