@@ -23,10 +23,7 @@
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
-    "test": "mocha",
-    "prebuild": "copyfiles ./src/functions/*.json ./dist -f && copyfiles ./src/index.html ./dist -f",
-    "copy-index": "copyfiles ./src/index.html ./dist -f",
-    "copy-loadjson": "copyfiles ./src/functions/*.json ./dist -f"
+    "test": "mocha"
   },
   "dependencies": {
     "@babel/core": "^7.6.3",
@@ -67,7 +64,6 @@
     "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.1.1",
-    "copyfiles": "^2.2.0",
     "custom-functions-metadata-plugin": "^1.0.24",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",

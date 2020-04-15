@@ -1,19 +1,6 @@
-﻿var default_dxmap, default_hccmap, default_hcccoefn, dummy;
-fetch('https://pnchakravarthula.github.io/epicc.github.io/dist/load_dxmap.json')
-.then(response => response.json())
-.then(data => {
-  default_dxmap = data;
-});
-fetch('https://pnchakravarthula.github.io/epicc.github.io/dist/load_hccmap.json')
-.then(response => response.json())
-.then(data => {
-  default_hccmap = data;
-});
-fetch('https://pnchakravarthula.github.io/epicc.github.io/dist/load_hcccoefn.json')
-.then(response => response.json())
-.then(data => {
-  default_hcccoefn = data;
-});
+﻿var default_dxmap = require('../load_dxmap.json');
+var default_hccmap = require('../load_hccmap.json');
+var default_hcccoefn = require('../load_hcccoefn.json');
 
 var default_ver = 'v23';
 var default_model = 'CNA'; 
