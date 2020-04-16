@@ -63,7 +63,11 @@ module.exports = async (env, options) => {
         {
           to: "taskpane.css",
           from: "./src/taskpane/taskpane.css"
-        }
+        },
+        {to:'load_dxmap.json' , from:'./src/functions/load_dxmap.json'},
+        {to:'load_hcccoefn.json' , from:'./src/functions/load_hcccoefn.json'},
+        {to:'load_hccmap.json' , from:'./src/functions/load_hccmap.json'},
+        {from:'./assets',to:'assets'} 
       ]),
       new HtmlWebpackPlugin({
         filename: "commands.html",
