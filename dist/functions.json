@@ -1,0 +1,998 @@
+{
+    "functions": [
+        {
+            "description": "Returns demographic raf value based on age, gender and coding model",
+            "id": "DEMO_RAF",
+            "name": "DEMO_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array",
+                    "dimensionality": "matrix",
+                    "name": "condition_list",
+                    "type": "string"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "orec",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns comma-separated list of descriptions of each DX Code from CMS crosswalk",
+            "id": "DX_DESC",
+            "name": "DX_DESC",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "dx_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "verbose",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns a comma separated list of the ccs represented by a list of DX codes after trumping/interaction logic is applied",
+            "id": "DX2CC",
+            "name": "DX2CC",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "dx_array",
+                    "type": "string"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "verbose",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns cc raf of associated dx codes after conversion to cc and trumping/interaction logic is applied (equivalent of cc_raf(dx2cc(dx_array))",
+            "id": "DX_RAF",
+            "name": "DX_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "dx_array",
+                    "type": "string"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "verbose",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Given a list of dx codes, return a list of deduped, normalized and untrumped dx codes valid for the coding model",
+            "id": "CLEAN_DX",
+            "name": "CLEAN_DX",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "dx_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Given a list of ccs, return a list of deduped, normalized and untrumped ccs codes valid for the coding model",
+            "id": "CLEAN_CC",
+            "name": "CLEAN_CC",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "cc_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns comma-separated list of descriptions of each HCC Code from CMS crosswalk",
+            "id": "CC_DESC",
+            "name": "CC_DESC",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "cc_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "verbose",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns multi-line info block for an HCC: Description, Children, Parents, RAF",
+            "id": "CC_INFO",
+            "name": "CC_INFO",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "cc",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns cc raf (does not include demographic RAF) of cc codes after trumping/interaction logic is applied",
+            "id": "CC_RAF",
+            "name": "CC_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "cc_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns a list of ccs after combining them and applying trumping/interaction logic",
+            "id": "CC_COMBINE",
+            "name": "CC_COMBINE",
+            "parameters": [
+                {
+                    "description": "accepts array of hcc codes",
+                    "dimensionality": "matrix",
+                    "name": "cc_array",
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns the RAF of the net incremental change (+Adds - Upgraded) between cc_lists.  Equivalent of cc_raf(cc_diff_increment)",
+            "id": "CC_INCREMENT_RAF",
+            "name": "CC_INCREMENT_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns the net incremental change between cc_lists, for example for calculating the value of a coding project over claims. Equivalent of +Adds - Upgraded in the format('+HCC001, +HCC18, - HCC019')",
+            "id": "CC_INCREMENT",
+            "name": "CC_INCREMENT",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of ccs and additional ccs and returns a list of ccs that are deletes or downgrades between the additional codes vs the baseline",
+            "id": "CC_GAPS",
+            "name": "CC_GAPS",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of ccs and additional ccs and returns raf of ccs that are deletes or downgrades between the additional codes vs the baseline",
+            "id": "CC_GAPS_RAF",
+            "name": "CC_GAPS_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of ccs and additional ccs and returns an information block on the differences ; eg: \"Adds: HCC001, HCC18; Deletes: HCC135; Upgraded: HCC019; Downgraded:\"",
+            "id": "CC_DIFF",
+            "name": "CC_DIFF",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns net raf difference between baseline ccs and additional ccs",
+            "id": "CC_DIFF_RAF",
+            "name": "CC_DIFF_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_cc_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of dx and additional dx and returns an information block on the differences ; eg: \"Adds: E119,  I2720; Deletes: I495; Upgraded: F10250; Downgraded:\"",
+            "id": "DX_DIFF",
+            "name": "DX_DIFF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dxs codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns net raf difference between baseline ccs and additional ccs",
+            "id": "DX_DIFF_RAF",
+            "name": "DX_DIFF_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dxs codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns the net incremental change between dx_lists, for example for calculating the value of a coding project over claims. Equivalent of +Adds - Upgraded in the format('+dx001, +dx18, - dx019')",
+            "id": "DX_INCREMENT",
+            "name": "DX_INCREMENT",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns the RAF of the net incremental change (+Adds - Upgraded) between dx_lists.  Equivalent of dx_raf(dx_diff_increment)",
+            "id": "DX_INCREMENT_RAF",
+            "name": "DX_INCREMENT_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of cc codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of dxs and additional dxs and returns a list of dxs that are deletes or downgrades between the additional codes vs the baseline",
+            "id": "DX_GAPS",
+            "name": "DX_GAPS",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "dx_diff_deletes_raf focuses on YoY Chronic Gaps and downgrades (net raf of downgraded).  Equivalent of dx_chronic(dx_diff_deletes).",
+            "id": "DX_GAPS_RAF",
+            "name": "DX_GAPS_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "age",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "sex",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        }
+    ]
+}
