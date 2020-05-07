@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Excel-Custom-Functions-JS.git"
+    "url": "git+https://github.com/OfficeDev/Excel-Custom-Functions-JS.git"
   },
   "license": "MIT",
   "config": {
@@ -26,6 +26,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "jshint": "^2.11.0",
+    "stream-json": "^1.3.3",
     "@babel/core": "^7.6.3",
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -37,22 +39,22 @@
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "custom-functions-metadata-plugin": "^1.0.24",
+    "eslint": "^6.8.0",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^25.3.0",
-    "mocha": "^7.1.1",
     "office-addin-cli": "^1.0.7",
     "office-addin-debugging": "^3.0.23",
     "office-addin-dev-certs": "^1.4.14",
     "office-addin-lint": "^1.0.19",
     "office-addin-prettier-config": "^1.0.12",
     "source-map-loader": "^0.2.4",
-    "stream-json": "^1.3.3",
     "ts-loader": "^6.2.0",
     "typescript": "^3.6.4",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
@@ -66,11 +68,11 @@
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "custom-functions-metadata-plugin": "^1.0.24",
+    "eslint": "^6.8.0",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^25.3.0",
-    "mocha": "^7.1.1",
     "office-addin-cli": "^1.0.7",
     "office-addin-debugging": "^3.0.23",
     "office-addin-dev-certs": "^1.4.14",
@@ -83,5 +85,16 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   },
-  "prettier": "office-addin-prettier-config"
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "prettier": "office-addin-prettier-config",
+  "description": "Custom functions enable you to add new functions to Excel by defining those functions in JavaScript as part of an add-in. Users within Excel can access custom functions just as they would any native function in Excel, such as `SUM()`.",
+  "bugs": {
+    "url": "https://github.com/OfficeDev/Excel-Custom-Functions-JS/issues"
+  },
+  "homepage": "https://github.com/OfficeDev/Excel-Custom-Functions-JS#readme",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": ""
 }
