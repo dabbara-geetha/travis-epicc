@@ -45,7 +45,7 @@
             "result": {}
         },
         {
-            "description": "Returns comma-separated list of descriptions of each DX Code from CMS crosswalk.",
+            "description": "Returns comma-separated list of descriptions of each DX Code from CMS crosswalk",
             "id": "DX_DESC",
             "name": "DX_DESC",
             "parameters": [
@@ -96,6 +96,11 @@
                 },
                 {
                     "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
                     "optional": true,
                     "type": "any"
                 },
@@ -215,7 +220,7 @@
             "result": {}
         },
         {
-            "description": "Returns comma-separated list of descriptions of each HCC Code from CMS crosswalk.",
+            "description": "Returns comma-separated list of descriptions of each HCC Code from CMS crosswalk",
             "id": "CC_DESC",
             "name": "CC_DESC",
             "parameters": [
@@ -249,7 +254,7 @@
             "result": {}
         },
         {
-            "description": "Returns multi-line info block for an HCC: Description, Children, Parents, RAF.  Past MVP can also feed a info pane / popup for desktop calculator like use.\nTo enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts, press Ctrl+slash",
+            "description": "Returns multi-line info block for an HCC: Description, Children, Parents, RAF",
             "id": "CC_INFO",
             "name": "CC_INFO",
             "parameters": [
@@ -337,7 +342,7 @@
             "result": {}
         },
         {
-            "description": "cc_combine",
+            "description": "Returns a list of ccs after combining them and applying trumping/interaction logic",
             "id": "CC_COMBINE",
             "name": "CC_COMBINE",
             "parameters": [
@@ -349,6 +354,11 @@
                 },
                 {
                     "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
                     "optional": true,
                     "type": "any"
                 },
@@ -379,12 +389,14 @@
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "base_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "additional_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
@@ -429,12 +441,14 @@
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "base_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "additional_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
@@ -471,7 +485,7 @@
             "result": {}
         },
         {
-            "description": "Special case of diff_deletes that focuses on YoY Chronic Gaps and downgrades.  Maybe does some adjusting for differing coding models yoy, but that sounds hard",
+            "description": "Compares a base list of ccs and additional ccs and returns a list of ccs that are deletes or downgrades between the additional codes vs the baseline",
             "id": "CC_GAPS",
             "name": "CC_GAPS",
             "parameters": [
@@ -479,12 +493,14 @@
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "base_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "additional_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
@@ -521,7 +537,7 @@
             "result": {}
         },
         {
-            "description": "Special case of diff_deletes_raf that focuses on YoY Chronic Gaps and downgrades (net raf of downgraded).  Equivalent of cc_chronic(cc_diff_deletes). Maybe does some adjusting for differing coding models yoy, but that sounds hard",
+            "description": "Compares a base list of ccs and additional ccs and returns raf of ccs that are deletes or downgrades between the additional codes vs the baseline",
             "id": "CC_GAPS_RAF",
             "name": "CC_GAPS_RAF",
             "parameters": [
@@ -529,12 +545,14 @@
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "base_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
                     "description": "accepts array of cc codes",
                     "dimensionality": "matrix",
                     "name": "additional_cc_array",
+                    "optional": true,
                     "type": "string"
                 },
                 {
@@ -571,7 +589,7 @@
             "result": {}
         },
         {
-            "description": "Compares a base list of ccs and additional ccs and returns an information block on the differences ; eg: \"Adds: HCC001, HCC18; Deletes: HCC135; Upgraded: HCC019; Downgraded:'",
+            "description": "Compares a base list of ccs and additional ccs and returns an information block on the differences ; eg: \"Adds: HCC001, HCC18; Deletes: HCC135; Upgraded: HCC019; Downgraded:\"",
             "id": "CC_DIFF",
             "name": "CC_DIFF",
             "parameters": [
@@ -628,7 +646,7 @@
             "result": {}
         },
         {
-            "description": "Compares a base list of ccs and additional ccs and returns an information block on the differences ; eg: \"Adds: HCC001, HCC18; Deletes: HCC135; Upgraded: HCC019; Downgraded:'",
+            "description": "Returns net raf difference between baseline ccs and additional ccs",
             "id": "CC_DIFF_RAF",
             "name": "CC_DIFF_RAF",
             "parameters": [
@@ -668,6 +686,90 @@
                 },
                 {
                     "name": "disabl",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Compares a base list of dx and additional dx and returns an information block on the differences ; eg: \"Adds: E119,  I2720; Deletes: I495; Upgraded: F10250; Downgraded:\"",
+            "id": "DX_DIFF",
+            "name": "DX_DIFF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dxs codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "never_trump",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "baserate",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Returns net raf difference between baseline ccs and additional ccs",
+            "id": "DX_DIFF_RAF",
+            "name": "DX_DIFF_RAF",
+            "parameters": [
+                {
+                    "description": "accepts array of dx codes",
+                    "dimensionality": "matrix",
+                    "name": "base_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "accepts array of dxs codes",
+                    "dimensionality": "matrix",
+                    "name": "additional_dx_array",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ver",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "name": "model",
                     "optional": true,
                     "type": "any"
                 },
@@ -789,9 +891,9 @@
             "result": {}
         },
         {
-            "description": "Special case of diff_deletes that focuses on YoY Chronic Gaps and downgrades.",
-            "id": "DX_GAP",
-            "name": "DX_GAP",
+            "description": "Compares a base list of dxs and additional dxs and returns a list of dxs that are deletes or downgrades between the additional codes vs the baseline",
+            "id": "DX_GAPS",
+            "name": "DX_GAPS",
             "parameters": [
                 {
                     "description": "accepts array of dx codes",
@@ -841,9 +943,9 @@
             "result": {}
         },
         {
-            "description": "Special case of diff_deletes_raf that focuses on YoY Chronic Gaps and downgrades (net raf of downgraded).  Equivalent of dx_chronic(dx_diff_deletes). Maybe does some adjusting for differing coding models yoy, but that sounds hard",
-            "id": "DX_GAP_RAF",
-            "name": "DX_GAP_RAF",
+            "description": "dx_diff_deletes_raf focuses on YoY Chronic Gaps and downgrades (net raf of downgraded).  Equivalent of dx_chronic(dx_diff_deletes).",
+            "id": "DX_GAPS_RAF",
+            "name": "DX_GAPS_RAF",
             "parameters": [
                 {
                     "description": "accepts array of dx codes",
